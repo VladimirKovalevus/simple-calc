@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QAbstractButton>
+#include <QEvent>
+#include "controlnode.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,5 +21,18 @@ public:
 
 private:
     Ui::MainWindow *ui;
+private slots:
+    void keyPressEvent(QKeyEvent* event) override;
+    void digit_pressed(QAbstractButton* btn);
+    void bracket_pressed(QAbstractButton* btn);
+    void dot_pressed();
+    void eval();
+    void oper_pressed(QAbstractButton* btn);
+    void function_pressed(QAbstractButton* btn);
+    void backspace_pressed();
+    void clear_pressed();
+    void press_x();
+    void credit_calc();
+
 };
 #endif // MAINWINDOW_H

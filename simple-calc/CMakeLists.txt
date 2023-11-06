@@ -17,8 +17,6 @@ set(PROJECT_SOURCES
         controller/mainwindow.cpp
         controller/mainwindow.h
         mainwindow.ui
-        service/qcustomplot.cpp
-        service/qcustomplot.h
         controller/controlnode.h
         controller/controlnode.cpp
         service/polishnotation.h
@@ -52,6 +50,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(simple-calc
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        service/creditcalc.h service/creditcalc.cpp
     )
 
 # Define target properties for Android with Qt 6 as:

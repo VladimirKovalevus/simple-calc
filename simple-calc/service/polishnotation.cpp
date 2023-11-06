@@ -194,10 +194,14 @@ int Evaluator::oper_process(char* str, std::stack<char> &_stack, std::queue<node
         if (res == 1) {
             _stack.push(LEFT_BRACKET);
         } else if (res == 2) {
-            while (!(LEFT_BRACKET == _stack.top())) {
+            while (!_stack.empty()&&!(LEFT_BRACKET == _stack.top())) {
                 _queue.push(node(1,_stack.top(), 0, 0));
                 _stack.pop();
             }
+            if(!_stack.empty()){
+                _stack.pop();
+            }
+
         }
     }
 
@@ -209,13 +213,44 @@ void Evaluator::lasts_operation(std::stack<char> &_stack, std::queue<node> &_que
         _stack.pop();
     }
 }
+Evaluator& Evaluator::PlotEnable(int x_min,int y_min,int x_max,int y_max,int accuracy){
+    stage.plot_enabled = true;
+    stage.dot_count =accuracy;
+    stage.x_max = x_max;
+    stage.x_min = x_min;
+    stage.y_max = y_max;
+    stage.y_min = y_min;
 
-int Evaluator::calc(std::queue<node>& _queue, double* result) {
+
+    return *this;
+}
+
+Stage& Evaluator::Calculate(double x){
+    double a =0;
+    if(stage.plot_enabled){
+        QVector<double> _x(stage.dot_count),_y(stage.dot_count);
+        double step = fabs(stage.x_max - stage.x_min)/stage.dot_count;
+        for(int i =0;i <stage.dot_count; ++i){
+            _x[i] = stage.x_min+step*i;
+            calc(stage.polish,&_y[i],_x[i]);
+        }
+        stage.x =_x;
+        stage.y = _y;
+    }
+    calc(stage.polish,&a, x);
+    stage.result = a;
+    return stage;
+}
+int Evaluator::calc(std::queue<node> _queue, double* result,double x) {
     std::stack<double> _stack;
     double res = 0;
     while (!_queue.empty()) {
-        node holder = _queue.back();
+        node holder = _queue.front();
         _queue.pop();
+        if(holder.is_x){
+            holder.is_x = 0;
+            holder.value = x;
+        }
         if (!holder.is_oper) {
             _stack.push(holder.value);
         } else {
@@ -258,21 +293,4 @@ int Evaluator::calc(std::queue<node>& _queue, double* result) {
     }
     *result = _stack.top();
     return 0;
-}
-std::queue<node> Evaluator::copy_queue_without_x(std::queue<node> src, double current_x) {
-    std::queue<node> dst = src;
-    int find_x = 0;
-    while (!src.empty()) {
-        node it = src.back();
-        double value = 0.0;
-        if (it.is_x){
-            find_x = 1;
-            value = current_x;
-        } else if (!it.is_oper) {
-            value = it.value;
-        }
-        dst.push(node(it.is_oper,it.oper,0,value));
-        src.pop();
-    }
-    return dst;
 }

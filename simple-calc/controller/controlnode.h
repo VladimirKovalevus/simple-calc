@@ -5,7 +5,7 @@
 
 #include"../service/polishnotation.h"
 #include"evalstringprocessor.h"
-
+#include<QStringList>
 
 
 class ControlNode
@@ -19,8 +19,11 @@ public:
     void removeLastChar();
     void clear();
 
-    Stage eval();
+    Evaluator getEvalProcessor();
 
+    Stage eval();
+    std::pair<QStringList,double> diffCredit(double body,double duration,double percent);
+    double annCredit(double body,double duration,double percent);
 private:
 
     ControlNode();
@@ -31,11 +34,12 @@ private:
     ControlNode operator=(ControlNode&& other);
 
 
+
     Evaluator evaluator;
     EvalStringProcessor ESP;
 
     int cursor =0;
-    std::array<State,100> memento;
+    std::array<State,255> memento;
 
 };
 

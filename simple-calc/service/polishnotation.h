@@ -4,6 +4,7 @@
 #include<queue>
 #include<stack>
 #include<QString>
+#include<QVector>
 /**
  * @file polish_notation.h
  * @brief This file contains functions for processing math expression from
@@ -54,8 +55,14 @@ struct node {
 struct Stage {
     Stage(){}
     std::queue<node> polish;
-    std::vector<double> x;
-    std::vector<double> y;
+    QVector<double> x;
+    QVector<double> y;
+    bool plot_enabled;
+    int x_min;
+    int x_max;
+    int y_min;
+    int y_max;
+    int dot_count;
     double result;
 };
 
@@ -79,10 +86,10 @@ private:
  * @param result pointer to result
  * @return status;
  */
-    int func_process(char* str, std::stack<char> &_stack, std::queue<node>& _queue);
-    int calc(std::queue<node>& _queue, double* result);
+    int  func_process(char* str, std::stack<char> &_stack, std::queue<node>& _queue);
+    int  calc(std::queue<node> _queue, double* result,double x);
     void lasts_operation(std::stack<char> &_stack, std::queue<node> &_queue);
-    int digit_process(char* str, std::queue<node>& _queue);
+    int  digit_process(char* str, std::queue<node>& _queue);
 public:
     Evaluator();
 
@@ -96,8 +103,8 @@ public:
      * and contains X. ERROR 0 smthing went wrong;
     */
     Evaluator& ToReversePolish(std::string str);
-    Evaluator& PlotEnable(int x_min=-100,int y_min=-100,int x_max=100,int y_max=100,double accuracy=100.0);
-    Stage& Calculate();
+    Evaluator& PlotEnable(int x_min=-100,int y_min=-100,int x_max=100,int y_max=100,int accuracy=100);
+    Stage& Calculate(double x);
 
 };
 

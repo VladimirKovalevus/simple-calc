@@ -174,7 +174,7 @@ int Evaluator::digit_process(char* str, std::queue<node>& _queue) {
 int Evaluator::oper_process(char* str, std::stack<char> &_stack, std::queue<node>& _queue, char is_last_oper) {
     int res = is_operator(str[0]);
     if (res) {
-        if (!_stack.empty()) {
+
             if (res == PLUS && (is_last_oper || _queue.empty())) {
                 res = U_PLUS;
             }
@@ -185,7 +185,6 @@ int Evaluator::oper_process(char* str, std::stack<char> &_stack, std::queue<node
                 _queue.push(node( 1, _stack.top(),0, 0));
                 _stack.pop();
             }
-        }
 
         _stack.push(res);
 
@@ -242,6 +241,7 @@ Stage& Evaluator::Calculate(double x){
     return stage;
 }
 int Evaluator::calc(std::queue<node> _queue, double* result,double x) {
+
     std::stack<double> _stack;
     double res = 0;
     while (!_queue.empty()) {
@@ -291,6 +291,7 @@ int Evaluator::calc(std::queue<node> _queue, double* result,double x) {
             }
         }
     }
+    if(_stack.empty()) return -1;
     *result = _stack.top();
     return 0;
 }

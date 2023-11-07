@@ -12,10 +12,13 @@ ControlNode& ControlNode::getControlNode(){
 }
 
 void ControlNode::addToLabel(QString str){
-    ESP.addToLabel(str);
+    if(ESP.addToLabel(str)){
+        memento[ESP.getLastIndex()] = ESP.getState();
+    }
 }
 void ControlNode::removeLastChar(){
     ESP.removeLastChar();
+    ESP.setState(memento[ESP.getLastIndex()]);
 }
 QString ControlNode::getLabelString(){
     return QString(ESP.getLabelString().c_str());
@@ -29,7 +32,12 @@ void ControlNode::clear(){
 }
 
 std::pair<QStringList,double> ControlNode::diffCredit(double body,double duration,double percent){
-    return CreditCalc::DiffCredit(body,duration,percent);
+    auto ans =CreditCalc::DiffCredit(body,duration,percent);
+    QStringList payments;
+    for(int i =0;i<ans.first.size();i++){
+        payments.push_back(QString("Платеж №")+QString::number(i+1)+" "+QString::number(ans.first[i]));
+    }
+    return std::make_pair(payments,ans.second);
 }
 double ControlNode::annCredit(double body,double duration,double percent){
     return CreditCalc::AnnCredit(body,duration,percent);

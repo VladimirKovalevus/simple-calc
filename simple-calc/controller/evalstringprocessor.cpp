@@ -20,14 +20,14 @@ State EvalStringProcessor::getState(){
 }
 std::string EvalStringProcessor::getLabelString(){ return std::string(label_string); }
 
-void EvalStringProcessor::addToLabel(QString str) {
+bool EvalStringProcessor::addToLabel(QString str) {
     if (last_index + str.size() >= size) {
-        return;
+        return false;
     }
     if(is_function(str.toStdString().c_str())){
         if(str=="mod"){
             if(last_oper&&!is_unar(str[0].unicode())){
-                return;
+                return false;
             }
             last_dot = false;
             last_zero = false;
@@ -36,16 +36,17 @@ void EvalStringProcessor::addToLabel(QString str) {
             is_x = false;
         }
         else{
-            if(last_num||is_x) return;
+            if(last_num||is_x) return false;
             last_dot = false;
             last_zero = false;
             last_num = false;
             last_oper = true;
+            brackets++;
         }
 
     }else if(is_operator(str[0].unicode())){
         if(last_oper&&!is_unar(str[0].unicode())){
-            return;
+            return false;
         }
         last_dot = false;
         last_zero = false;
@@ -53,13 +54,13 @@ void EvalStringProcessor::addToLabel(QString str) {
         last_oper = true;
         is_x = false;
     }else if(is_digit(str[0].unicode())){
-        if(is_x) return;
+        if(is_x) return false;
         last_zero = str[0]=='0';
         last_num=true;
         last_oper = false;
     }else if(str[0]=='x'){
         if(is_x||last_dot||last_num){
-            return;
+            return false;
         }
         last_dot=false;
         last_zero = str[0]=='0';
@@ -67,16 +68,29 @@ void EvalStringProcessor::addToLabel(QString str) {
         last_oper = false;
         is_x=true;
     }else if(str[0]=='.'){
-        if(last_dot||is_x) return;
+        if(last_dot||is_x) return false;
         if(!last_num) str ="0.";
         last_dot=true;
         last_num = true;
         last_oper = false;
+    }else if(str[0]=='('){
+        if(!last_oper) return false;
+        brackets++;
+    }else if(str[0]==')'){
+        if(brackets>0&&(is_x||last_num))
+        {
+            brackets--;
+            last_num=false;
+        }
+        else{
+            return false;
+        }
     }
 
     for (int i = 0; i < str.size(); i++, last_index++) {
         label_string[last_index] = str[i].unicode();
     }
+    return true;
 }
 void EvalStringProcessor::removeLastChar() {
     if (last_index == 0) {
@@ -84,10 +98,7 @@ void EvalStringProcessor::removeLastChar() {
     }
     int to_remove = 1;
     bool is_find = 0;
-    if(label_string[last_index-1]=='('){
-        to_remove=0;
-        label_string[--last_index]=' ';
-    }
+
     if (last_index > 3) {
         if (label_string[last_index - 4] == 'a' ||
             label_string[last_index - 4] == 'A') {
@@ -102,10 +113,12 @@ void EvalStringProcessor::removeLastChar() {
             is_find = true;
         }
     }
+
     if (last_index > 2 && !is_find) {
         if (is_sin(&label_string[last_index - 3]) ||
             is_cos(&label_string[last_index - 3]) ||
-            is_tan(&label_string[last_index - 3])) {
+            is_tan(&label_string[last_index - 3]) ||
+            is_mod(&label_string[last_index - 3])) {
             to_remove = 3;
             is_find = true;
         } else if (is_log(&label_string[last_index - 3])) {
@@ -121,6 +134,7 @@ void EvalStringProcessor::removeLastChar() {
         last_index--;
         label_string[last_index] = ' ';
     }
+
 }
 
 bool EvalStringProcessor::validateString() {

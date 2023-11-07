@@ -5,7 +5,7 @@
 
 struct State{
     State(){
-        last_index = 0;
+        last_index=0;
         last_dot = false;
         last_zero = false;
         last_num = false;
@@ -36,16 +36,17 @@ class EvalStringProcessor{
 
 public:
     EvalStringProcessor();
-    void addToLabel(QString str);
+    bool addToLabel(QString str);
     void removeLastChar();
     void clear();
     void setState(State state);
     std::string getLabelString();
     State getState();
+    int getLastIndex() { return last_index; }
 
 private:
     bool validateString();
-    int getLastIndex() { return last_index; }
+
 
     char label_string[256];
 

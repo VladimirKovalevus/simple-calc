@@ -48,7 +48,7 @@ int is_bracket(char c) {
     return res;
 }
 bool is_unar(char c) {
-    if (c == '+' && c == '-') {
+    if (c == '+' || c == '-') {
         return 1;
     }
     return 0;

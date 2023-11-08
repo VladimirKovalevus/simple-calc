@@ -22,6 +22,7 @@ public:
     Evaluator getEvalProcessor();
 
     Stage eval();
+    bool is_valid();
     std::pair<QStringList,double> diffCredit(double body,double duration,double percent);
     double annCredit(double body,double duration,double percent);
 private:

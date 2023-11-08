@@ -43,15 +43,13 @@ public:
     std::string getLabelString();
     State getState();
     int getLastIndex() { return last_index; }
-
-private:
     bool validateString();
+private:
+
 
 
     char label_string[256];
-
     const int size = 255;
-
     int last_index=0;
     bool last_dot = false;
     bool last_zero = false;

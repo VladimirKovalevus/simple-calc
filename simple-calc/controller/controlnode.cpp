@@ -16,6 +16,9 @@ void ControlNode::addToLabel(QString str){
         memento[ESP.getLastIndex()] = ESP.getState();
     }
 }
+bool ControlNode::is_valid(){
+    return ESP.validateString();
+}
 void ControlNode::removeLastChar(){
     ESP.removeLastChar();
     ESP.setState(memento[ESP.getLastIndex()]);

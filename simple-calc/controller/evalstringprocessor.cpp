@@ -24,6 +24,9 @@ bool EvalStringProcessor::addToLabel(QString str) {
     if (last_index + str.size() >= size) {
         return false;
     }
+    if(label_string[last_index-1]==')'&& ((!is_operator(str[0].unicode())&&!is_mod(str.toStdString().c_str()))&&str[0]!=')')){
+        return false;
+    }
     if(is_function(str.toStdString().c_str())){
         if(str=="mod"){
             if(last_oper&&!is_unar(str[0].unicode())){
@@ -80,7 +83,6 @@ bool EvalStringProcessor::addToLabel(QString str) {
         if(brackets>0&&(is_x||last_num))
         {
             brackets--;
-            last_num=false;
         }
         else{
             return false;
@@ -162,7 +164,7 @@ bool EvalStringProcessor::validateString() {
                 break;
             }
         }
-        if (label_string[i]) {
+        if (is_digit(label_string[i])) {
             if (is_last_brack) {
                 res = false;
                 break;
@@ -265,12 +267,13 @@ bool EvalStringProcessor::validateString() {
             }
         }
     }
+    if(is_last_oper) res = false;
 
     return res;
 }
 void EvalStringProcessor::clear() {
     for (int i = 0; i < size; i++) {
-        label_string[i] = ' ';
+        label_string[i] = '\0';
     }
     label_string[255] = '\0';
     setState(State());

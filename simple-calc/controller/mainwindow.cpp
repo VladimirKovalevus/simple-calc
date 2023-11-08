@@ -53,7 +53,7 @@ void MainWindow::credit_calc() {
     ui->diff_pay->addItems(ansDiff.first);
 }
 void MainWindow::keyPressEvent(QKeyEvent* event) {
-    if(event->key()>='0'&&event->key()<=9){
+    if(event->key()>='0'&&event->key()<='9'){
         ControlNode::getControlNode().addToLabel(event->text());
     }else{
         switch (event->key()) {
@@ -86,7 +86,7 @@ void MainWindow::keyPressEvent(QKeyEvent* event) {
             break;
         }
     }
-     ui->mainLabel->setText(ControlNode::getControlNode().getLabelString());
+    ui->mainLabel->setText(ControlNode::getControlNode().getLabelString());
 }
 void MainWindow::digit_pressed(QAbstractButton* btn) {
     ControlNode::getControlNode().addToLabel(btn->text());
@@ -101,24 +101,28 @@ void MainWindow::dot_pressed() {
     ui->mainLabel->setText(ControlNode::getControlNode().getLabelString());
 }
 void MainWindow::eval() {
-    Evaluator evaBuilder =ControlNode::getControlNode().getEvalProcessor();
-    evaBuilder = evaBuilder.ToReversePolish(ui->mainLabel->text().toStdString());
-    if(ui->tabWidget->currentIndex()==0){
-        evaBuilder = evaBuilder.PlotEnable(ui->x_min->value(),
-                                           ui->y_min->value(),
-                                           ui->x_max->value(),
-                                           ui->y_max->value());
+    if(ControlNode::getControlNode().is_valid()){
+        Evaluator evaBuilder =ControlNode::getControlNode().getEvalProcessor();
+        evaBuilder = evaBuilder.ToReversePolish(ui->mainLabel->text().toStdString());
+        if(ui->tabWidget->currentIndex()==0){
+            evaBuilder = evaBuilder.PlotEnable(ui->x_min->value(),
+                                               ui->y_min->value(),
+                                               ui->x_max->value(),
+                                               ui->y_max->value());
+        }
+        Stage answer = evaBuilder.Calculate(ui->doubleSpinBox->value());
+        ui->answerLabel->setText(QString::number(answer.result));
+        ui->plot->graph(0)->setData(answer.x,answer.y);
+        ui->plot->xAxis->setLabel("x");
+        ui->plot->yAxis->setLabel("y");
+        ui->plot->xAxis->setRange(ui->x_min->value(),
+                                  ui->x_max->value());
+        ui->plot->yAxis->setRange(ui->y_min->value(),
+                                  ui->y_max->value());
+        ui->plot->replot();
+    }else{
+        ui->answerLabel->setText("ERR");
     }
-    Stage answer = evaBuilder.Calculate(ui->doubleSpinBox->value());
-    ui->answerLabel->setText(QString::number(answer.result));
-    ui->plot->graph(0)->setData(answer.x,answer.y);
-    ui->plot->xAxis->setLabel("x");
-    ui->plot->yAxis->setLabel("y");
-    ui->plot->xAxis->setRange(ui->x_min->value(),
-                              ui->x_max->value());
-    ui->plot->yAxis->setRange(ui->y_min->value(),
-                              ui->y_max->value());
-    ui->plot->replot();
 }
 void MainWindow::oper_pressed(QAbstractButton* btn) {
     ControlNode::getControlNode().addToLabel(btn->text());

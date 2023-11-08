@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1226</width>
-    <height>535</height>
+    <height>768</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,28 +25,6 @@
 	background-color: black
 }</string>
    </property>
-   <widget class="QLabel" name="mainLabel">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>30</y>
-      <width>551</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>-1</pointsize>
-      <italic>true</italic>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border: none; font-size: 40px; color:white; background-color:rgb(15,15,15)</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
@@ -1762,11 +1740,31 @@ color:black;
       <italic>true</italic>
      </font>
     </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
     <property name="styleSheet">
      <string notr="true">border: none; font-size: 30px; color:white; background-color:rgb(15,15,15)</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="mainLabel">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>551</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: none; font-size: 30px; color:white; 
+background-color:rgb(15,15,15)</string>
     </property>
    </widget>
   </widget>
@@ -1792,9 +1790,9 @@ color:black;
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="functions"/>
+  <buttongroup name="digits"/>
   <buttongroup name="operators"/>
   <buttongroup name="brackets"/>
-  <buttongroup name="digits"/>
+  <buttongroup name="functions"/>
  </buttongroups>
 </ui>

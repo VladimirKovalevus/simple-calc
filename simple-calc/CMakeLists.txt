@@ -14,8 +14,8 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS  Widgets PrintSupport)
 
 set(PROJECT_SOURCES
         main.cpp
-        controller/mainwindow.cpp
-        controller/mainwindow.h
+        view/mainwindow.cpp
+        view/mainwindow.h
         mainwindow.ui
         controller/controlnode.h
         controller/controlnode.cpp

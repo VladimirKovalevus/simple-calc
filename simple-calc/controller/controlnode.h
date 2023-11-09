@@ -1,47 +1,43 @@
 #ifndef CONTROLNODE_H
 #define CONTROLNODE_H
-#include<memory>
-#include<array>
+#include <QStringList>
+#include <array>
+#include <memory>
 
-#include"../service/polishnotation.h"
-#include"evalstringprocessor.h"
-#include<QStringList>
+#include "../service/polishnotation.h"
+#include "evalstringprocessor.h"
 
+class ControlNode {
+ public:
+  static ControlNode& getControlNode();
 
-class ControlNode
-{
-public:
+  void addToLabel(QString str);
+  QString getLabelString();
+  void removeLastChar();
+  void clear();
 
-    static ControlNode& getControlNode();
+  Evaluator getEvalProcessor();
 
-    void addToLabel(QString str);
-    QString getLabelString();
-    void removeLastChar();
-    void clear();
+  Stage eval();
+  bool is_valid();
+  std::pair<QStringList, double> diffCredit(double body, double duration,
+                                            double percent);
+  double annCredit(double body, double duration, double percent);
 
-    Evaluator getEvalProcessor();
+ private:
+  ControlNode();
 
-    Stage eval();
-    bool is_valid();
-    std::pair<QStringList,double> diffCredit(double body,double duration,double percent);
-    double annCredit(double body,double duration,double percent);
-private:
+  ControlNode(const ControlNode& other);
+  ControlNode(ControlNode&& other);
+  ControlNode operator=(const ControlNode& other);
+  ControlNode operator=(ControlNode&& other);
 
-    ControlNode();
+  QStringList payments_convert(std::vector<double> payments);
+  Evaluator evaluator;
+  EvalStringProcessor ESP;
 
-    ControlNode(const ControlNode& other);
-    ControlNode (ControlNode&& other);
-    ControlNode operator=(const ControlNode& other);
-    ControlNode operator=(ControlNode&& other);
-
-
-
-    Evaluator evaluator;
-    EvalStringProcessor ESP;
-
-    int cursor =0;
-    std::array<State,255> memento;
-
+  int cursor = 0;
+  std::array<State, 255> memento;
 };
 
-#endif // CONTROLNODE_H
+#endif  // CONTROLNODE_H

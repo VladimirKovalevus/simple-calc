@@ -123,7 +123,7 @@ TEST(Functions, tanx_plot){
     Stage ans = eval.ToReversePolish("tan(x)").PlotEnable().Calculate(3);
     
     double step = double(ans.x_max-ans.x_min)/ans.dot_count;
-    for(int i =0;i<ans.x.size();i++){
+    for(size_t i =0;i<ans.x.size();i++){
         ASSERT_EQ(ans.x[i], ans.x_min+step*i);
         ASSERT_EQ(ans.y[i], tan(ans.x_min+step*i));
     }
@@ -133,7 +133,7 @@ TEST(Functions, sinx_plot){
     Evaluator eval;
     Stage ans = eval.ToReversePolish("sin(x)").PlotEnable().Calculate(3);
     double step = double(ans.x_max-ans.x_min)/ans.dot_count;
-    for(int i =0;i<ans.x.size();i++){
+    for(size_t i =0;i<ans.x.size();i++){
         ASSERT_EQ(ans.x[i], ans.x_min+step*i);
         ASSERT_EQ(ans.y[i], sin(ans.x_min+step*i));
     }  

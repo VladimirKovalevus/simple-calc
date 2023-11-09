@@ -77,7 +77,6 @@ Evaluator::Evaluator() {}
 
 Evaluator& Evaluator::ToReversePolish(std::string str) {
   int is_prev_oper = 0;
-  int res = 1;
   std::stack<char> _stack;
   std::queue<node> _queue;
   for (int i = 0; str[i] != '\0' && i < 255; i++) {
@@ -88,7 +87,6 @@ Evaluator& Evaluator::ToReversePolish(std::string str) {
     int digit_shift = 0;
     if (str[i] == 'x' || str[i] == 'X') {
       _queue.push(node(0, 0, 1, 0));
-      res = 2;
       is_prev_oper = 0;
     } else if ((func_shift = func_process(&str[i], _stack, _queue) - 1) > 0) {
       is_prev_oper = 1;

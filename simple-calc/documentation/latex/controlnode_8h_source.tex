@@ -1,0 +1,49 @@
+\doxysection{controlnode.\+h}
+\hypertarget{controlnode_8h_source}{}\label{controlnode_8h_source}\index{controller/controlnode.h@{controller/controlnode.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CONTROLNODE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CONTROLNODE\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <QStringList>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}../service/polishnotation.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}evalstringprocessor.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classControlNode}{ControlNode}}\ \{}
+\DoxyCodeLine{00011\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classControlNode}{ControlNode}}\&\ getControlNode();}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \textcolor{keywordtype}{void}\ addToLabel(QString\ str);}
+\DoxyCodeLine{00015\ \ \ QString\ getLabelString();}
+\DoxyCodeLine{00016\ \ \ \textcolor{keywordtype}{void}\ removeLastChar();}
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{void}\ clear();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \mbox{\hyperlink{classEvaluator}{Evaluator}}\ getEvalProcessor();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \mbox{\hyperlink{structStage}{Stage}}\ eval();}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{bool}\ is\_valid();}
+\DoxyCodeLine{00023\ \ \ std::pair<QStringList,\ double>\ diffCredit(\textcolor{keywordtype}{double}\ body,\ \textcolor{keywordtype}{double}\ duration,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ percent);}
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{double}\ annCredit(\textcolor{keywordtype}{double}\ body,\ \textcolor{keywordtype}{double}\ duration,\ \textcolor{keywordtype}{double}\ percent);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{classControlNode}{ControlNode}}();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{classControlNode}{ControlNode}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classControlNode}{ControlNode}}\&\ other);}
+\DoxyCodeLine{00031\ \ \ \mbox{\hyperlink{classControlNode}{ControlNode}}(\mbox{\hyperlink{classControlNode}{ControlNode}}\&\&\ other);}
+\DoxyCodeLine{00032\ \ \ \mbox{\hyperlink{classControlNode}{ControlNode}}\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classControlNode}{ControlNode}}\&\ other);}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{classControlNode}{ControlNode}}\ operator=(\mbox{\hyperlink{classControlNode}{ControlNode}}\&\&\ other);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ QStringList\ payments\_convert(std::vector<double>\ payments);}
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{classEvaluator}{Evaluator}}\ evaluator;}
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{classEvalStringProcessor}{EvalStringProcessor}}\ ESP;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{int}\ cursor\ =\ 0;}
+\DoxyCodeLine{00040\ \ \ std::array<State,\ 255>\ memento;}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ CONTROLNODE\_H}}
+
+\end{DoxyCode}

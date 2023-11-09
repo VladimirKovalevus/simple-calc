@@ -3,7 +3,7 @@ CPP= g++
 TEST= test/*.cpp service/polishnotation.cpp service/utils.cpp
 DIST= dist
 DISTNAME=simplecalc
-CFLAGS= -Wall -Werror -Wextra -lm -lcheck
+CFLAGS= -Wall -Werror -Wextra -lgtest
 
 
 
@@ -16,9 +16,9 @@ endif
 all: install
 
 install:
-	-mkdir ../build
-	cd ../build && cmake ../src && make
-	./../build/Calc
+	-mkdir -p ../build
+	cd ../build && cmake ../simple-calc && make
+	./../build/simple-calc
 
 uninstall:
 	-rm -rf ../build
@@ -41,17 +41,12 @@ dvi:
 
 dist:
 	mkdir -p ../$(DIST)
-	cd .. && cp simple-calc/* $(DIST)
+	cd .. && cp -r simple-calc/* $(DIST)
 	cd .. && tar cvzf simple-calc.tgz $(DIST)/
-	rm -rf $(DIST)
+	rm -rf ../$(DIST)
 
-backend:
-	$(CPP) -c $(BACKEND).c
-	ar rcs backend.a *.o
-	rm -rf *.o
-
-test: backend
-	$(CC) $(GCOVFLAGS) $(TEST) backend.a -o test.out $(TESTFLAGS)
+test: 
+	$(CPP) $(TEST) -o test.out $(CFLAGS)
 	./test.out
 	
 
@@ -71,3 +66,4 @@ valgrind: backend $(TEST)
 	make clean
 	cat val_out.txt
 
+.PHONY: test

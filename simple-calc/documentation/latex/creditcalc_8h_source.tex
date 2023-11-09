@@ -1,0 +1,20 @@
+\doxysection{creditcalc.\+h}
+\hypertarget{creditcalc_8h_source}{}\label{creditcalc_8h_source}\index{service/creditcalc.h@{service/creditcalc.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CREDITCALC\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CREDITCALC\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCreditCalc}{CreditCalc}}\ \{}
+\DoxyCodeLine{00005\ \ \ \mbox{\hyperlink{classCreditCalc}{CreditCalc}}()\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00008\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ AnnCredit(\textcolor{keywordtype}{double}\ vklad,\ \textcolor{keywordtype}{double}\ percent,\ \textcolor{keywordtype}{int}\ month\_num);}
+\DoxyCodeLine{00009\ \ \ \textcolor{keyword}{static}\ std::pair<std::vector<double>,\ \textcolor{keywordtype}{double}>\ DiffCredit(\textcolor{keywordtype}{double}\ body,}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ duration,}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ percent);}
+\DoxyCodeLine{00012\ \};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ CREDITCALC\_H}}
+
+\end{DoxyCode}

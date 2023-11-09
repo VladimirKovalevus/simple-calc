@@ -1,0 +1,65 @@
+\doxysection{evalstringprocessor.\+h}
+\hypertarget{evalstringprocessor_8h_source}{}\label{evalstringprocessor_8h_source}\index{controller/evalstringprocessor.h@{controller/evalstringprocessor.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ EVALSTRINGPROCESSOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ EVALSTRINGPROCESSOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QString>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structState}{State}}\ \{}
+\DoxyCodeLine{00007\ \ \ \mbox{\hyperlink{structState}{State}}()\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ last\_index\ =\ 0;}
+\DoxyCodeLine{00009\ \ \ \ \ last\_dot\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00010\ \ \ \ \ last\_zero\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00011\ \ \ \ \ last\_num\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00012\ \ \ \ \ last\_oper\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00013\ \ \ \ \ is\_x\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00014\ \ \ \ \ brackets\ =\ 0;}
+\DoxyCodeLine{00015\ \ \ \}}
+\DoxyCodeLine{00016\ \ \ \mbox{\hyperlink{structState}{State}}(\textcolor{keywordtype}{int}\ \_last\_index,\ \textcolor{keywordtype}{bool}\ \_last\_dot,\ \textcolor{keywordtype}{bool}\ \_last\_zero,\ \textcolor{keywordtype}{int}\ \_last\_num,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_last\_oper,\ \textcolor{keywordtype}{bool}\ \_is\_x,\ \textcolor{keywordtype}{int}\ \_brackets)\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ last\_index\ =\ \_last\_index;}
+\DoxyCodeLine{00019\ \ \ \ \ last\_dot\ =\ \_last\_dot;}
+\DoxyCodeLine{00020\ \ \ \ \ last\_zero\ =\ \_last\_zero;}
+\DoxyCodeLine{00021\ \ \ \ \ last\_num\ =\ \_last\_num;}
+\DoxyCodeLine{00022\ \ \ \ \ last\_oper\ =\ \_last\_oper;}
+\DoxyCodeLine{00023\ \ \ \ \ brackets\ =\ \_brackets;}
+\DoxyCodeLine{00024\ \ \ \ \ is\_x\ =\ \_is\_x;}
+\DoxyCodeLine{00025\ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{int}\ last\_index;}
+\DoxyCodeLine{00027\ \ \ \textcolor{keywordtype}{bool}\ last\_dot;}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{bool}\ last\_zero;}
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{bool}\ last\_num;}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{bool}\ last\_oper;}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{bool}\ is\_x;}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{int}\ brackets;}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEvalStringProcessor}{EvalStringProcessor}}\ \{}
+\DoxyCodeLine{00036\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{classEvalStringProcessor}{EvalStringProcessor}}();}
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{bool}\ addToLabel(QString\ str);}
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{void}\ removeLastChar();}
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{void}\ clear();}
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{void}\ setState(\mbox{\hyperlink{structState}{State}}\ state);}
+\DoxyCodeLine{00042\ \ \ std::string\ getLabelString();}
+\DoxyCodeLine{00043\ \ \ \mbox{\hyperlink{structState}{State}}\ getState();}
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{int}\ getLastIndex()\ \{\ \textcolor{keywordflow}{return}\ last\_index;\ \}}
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{bool}\ validateString();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{char}\ label\_string[256];}
+\DoxyCodeLine{00049\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ size\ =\ 255;}
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{int}\ last\_index\ =\ 0;}
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{bool}\ last\_dot\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{bool}\ last\_zero\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00053\ \ \ \textcolor{keywordtype}{bool}\ last\_num\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{bool}\ last\_oper\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordtype}{bool}\ is\_x\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{int}\ brackets\ =\ 0;}
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ EVALSTRINGPROCESSOR\_H}}
+
+\end{DoxyCode}

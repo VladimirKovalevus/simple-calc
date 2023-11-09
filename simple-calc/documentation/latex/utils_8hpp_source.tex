@@ -1,0 +1,52 @@
+\doxysection{utils.\+hpp}
+\hypertarget{utils_8hpp_source}{}\label{utils_8hpp_source}\index{service/utils.hpp@{service/utils.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_SERVICE\_UTILS\_HPP\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_SERVICE\_UTILS\_HPP\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{enum}\ PriorityClass\ \{}
+\DoxyCodeLine{00005\ \ \ LOW\_PRIORITY\ =\ 2,}
+\DoxyCodeLine{00006\ \ \ AVG\_PRIORITY\ =\ 6,}
+\DoxyCodeLine{00007\ \ \ HIGH\_PRIORITY\ =\ 15,}
+\DoxyCodeLine{00008\ \ \ PRIORITY\_CLASSES\_COUNT}
+\DoxyCodeLine{00009\ \};}
+\DoxyCodeLine{00010\ \textcolor{keyword}{enum}\ Priority\ \{}
+\DoxyCodeLine{00011\ \ \ LEFT\_BRACKET,}
+\DoxyCodeLine{00012\ \ \ PLUS,}
+\DoxyCodeLine{00013\ \ \ MINUS\ =\ 2,}
+\DoxyCodeLine{00014\ \ \ MULT,}
+\DoxyCodeLine{00015\ \ \ DIV,}
+\DoxyCodeLine{00016\ \ \ MOD,}
+\DoxyCodeLine{00017\ \ \ POW\ =\ 6,}
+\DoxyCodeLine{00018\ \ \ SIN,}
+\DoxyCodeLine{00019\ \ \ COS,}
+\DoxyCodeLine{00020\ \ \ TAN,}
+\DoxyCodeLine{00021\ \ \ ASIN,}
+\DoxyCodeLine{00022\ \ \ ACOS,}
+\DoxyCodeLine{00023\ \ \ ATAN,}
+\DoxyCodeLine{00024\ \ \ SQRT,}
+\DoxyCodeLine{00025\ \ \ LN,}
+\DoxyCodeLine{00026\ \ \ LOG\ =\ 15,}
+\DoxyCodeLine{00027\ \ \ U\_MINUS,}
+\DoxyCodeLine{00028\ \ \ U\_PLUS,}
+\DoxyCodeLine{00029\ \ \ OPER\_COUNT}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{bool}\ is\_digit(\textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{int}\ is\_operator(\textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{int}\ is\_bracket(\textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{bool}\ is\_unar(\textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{int}\ is\_mod(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{int}\ is\_cos(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{int}\ is\_sin(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{int}\ is\_tan(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{int}\ is\_sqrt(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{int}\ is\_log(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{int}\ is\_ln(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{int}\ is\_function(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\_\_SERVICE\_UTILS\_HPP\_\_}}
+
+\end{DoxyCode}

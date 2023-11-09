@@ -1,0 +1,44 @@
+\doxysection{mainwindow.\+h}
+\hypertarget{mainwindow_8h_source}{}\label{mainwindow_8h_source}\index{view/mainwindow.h@{view/mainwindow.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MAINWINDOW\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MAINWINDOW\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QAbstractButton>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QEvent>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QMainWindow>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}../controller/controlnode.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ QT\_BEGIN\_NAMESPACE}
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }Ui\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMainWindow}{MainWindow}};}
+\DoxyCodeLine{00013\ \}}
+\DoxyCodeLine{00014\ QT\_END\_NAMESPACE}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMainWindow}{MainWindow}}\ :\ \textcolor{keyword}{public}\ QMainWindow\ \{}
+\DoxyCodeLine{00017\ \ \ Q\_OBJECT}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \mbox{\hyperlink{classMainWindow}{MainWindow}}(QWidget*\ parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00021\ \ \ \mbox{\hyperlink{classMainWindow}{\string~MainWindow}}();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ Ui::MainWindow*\ ui;}
+\DoxyCodeLine{00025\ \ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{void}\ keyPressEvent(QKeyEvent*\ event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00027\ \ \ \textcolor{keywordtype}{void}\ digit\_pressed(QAbstractButton*\ btn);}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{void}\ bracket\_pressed(QAbstractButton*\ btn);}
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{void}\ dot\_pressed();}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{void}\ eval();}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{void}\ oper\_pressed(QAbstractButton*\ btn);}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{void}\ function\_pressed(QAbstractButton*\ btn);}
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{void}\ backspace\_pressed();}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{void}\ clear\_pressed();}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{void}\ press\_x();}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{void}\ credit\_calc();}
+\DoxyCodeLine{00037\ \};}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ MAINWINDOW\_H}}
+
+\end{DoxyCode}
